@@ -1,7 +1,8 @@
 # 🧩 Daily LeetCode Solving Tracker
 
-![LeetCode Stats](https://leetcard.jacoblin.cool/Gambhir326?theme=dark&font=Ubuntu)
-
+<p align="center">
+  <img src="https://leetcard.jacoblin.cool/gambhirlairenjam_2004?theme=dark&font=Ubuntu&ext=activity" alt="Gambhir's LeetCode Stats" />
+</p>
 Automated repository tracking my daily problem-solving journey on [LeetCode](https://leetcode.com/u/Gambhir326/). Solutions are synced directly upon submission using **LeetSync**, cataloging optimal algorithms, clean implementations, and time/space complexity analysis.
 
 ---
