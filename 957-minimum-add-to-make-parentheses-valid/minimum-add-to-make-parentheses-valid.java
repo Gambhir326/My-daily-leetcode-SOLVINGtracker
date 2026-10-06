@@ -4,8 +4,7 @@ class Solution {
         int close_needed= 0;
 
         for(char ch: s.toCharArray()) {
-            if(ch == '('
-            ) {
+            if(ch == '(') {
                 close_needed++;
             }
             else{
