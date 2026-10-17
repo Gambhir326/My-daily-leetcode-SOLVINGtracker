@@ -1,19 +1,18 @@
 class Solution {
     public int minSwaps(int[] nums) {
         int n = nums.length;
-        long[] keys = new long[n];
 
-        for (int i = 0; i < n; i++) {
-            int x = nums[i], s = 0;
-            while (x > 0) { s += x % 10; x /= 10; }   
-            keys[i] = ((long) s << 47) | ((long) nums[i] << 17) | i;
-        }
+        int[] ds = new int[n];
+        for (int i = 0; i < n; i++) ds[i] = digitSum(nums[i]);
 
-        Arrays.sort(keys);                           
+        Integer[] target = new Integer[n];
+        for (int i = 0; i < n; i++) target[i] = i;
 
-        int mask = (1 << 17) - 1;                     
-        int[] target = new int[n];
-        for (int k = 0; k < n; k++) target[k] = (int) (keys[k] & mask);
+        Comparator<Integer> cmp = (a, b) -> {
+            if (ds[a] != ds[b]) return Integer.compare(ds[a], ds[b]);
+            return Integer.compare(nums[a], nums[b]);
+        };
+        Arrays.sort(target, cmp);
 
         boolean[] visited = new boolean[n];
         int swaps = 0;
@@ -24,8 +23,14 @@ class Solution {
                 j = target[j];
                 len++;
             }
-            if (len > 0) swaps += len - 1;// a cycle of length L needs L-1 swaps
+            if (len > 0) swaps += len - 1;
         }
         return swaps;
+    }
+
+    private int digitSum(int x) {
+        int s = 0;
+        while (x > 0) { s += x % 10; x /= 10; }
+        return s;
     }
 }
